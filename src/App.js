@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Products from './routes/Products';
 
 function App() {
-  //const carritoCompras = [];
   return (
     <div className="App">
       <Router>
