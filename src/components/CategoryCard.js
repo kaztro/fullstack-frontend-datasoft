@@ -5,16 +5,25 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import Products from '../routes/Products';
 
 export default function CategoryCard({
     id,
     title,
     imageSource,
-    description
+    description,
+    productos
 }) {
   // navigate = useNavigate();
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  
   const imgUrl = "http://localhost:8080/images/" + imageSource;
+  
   return (
     <Card sx={{ maxWidth: 300 }}>
       <CardMedia
@@ -31,7 +40,24 @@ export default function CategoryCard({
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Ver productos</Button>
+      <Button onClick={handleOpen}>Open modal</Button>
+<Modal
+  open={open}
+  onClose={handleClose}
+  aria-labelledby="modal-modal-title"
+  aria-describedby="modal-modal-description"
+>
+  <Box sx={{
+  bgcolor: 'background.paper',
+  boxShadow: 24,
+  marginTop: 5
+}}>
+    <Typography id="modal-modal-title" variant="h3" component="h4" textAlign='center'>
+      «{title}» 
+    </Typography>
+    <Products productos={productos} />
+  </Box>
+</Modal>
       </CardActions>
     </Card>
   )

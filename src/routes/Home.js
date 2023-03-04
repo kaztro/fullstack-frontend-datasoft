@@ -19,13 +19,12 @@ export default function Home() {
   }
   return (
     <Container fixed>
-      <br />
-      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 8 }} columnSpacing={-40}>
+      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 8 }} columnSpacing={-60} style={{marginTop: '0.25em'}}>
         {
           categorias.map(card => (
             <Grid xs={2} sm={2} md={4} key={card.cat_id}>
               <CategoryCard id={card.cat_id} title={card.cat_nombre} imageSource={card.cat_imagen} 
-                description={card.cat_orden} />
+                description={card.cat_orden} productos={card.productos} />
             </Grid>
           ))}
       </Grid>
